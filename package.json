@@ -1,0 +1,69 @@
+{
+  "name": "create-git-web-site",
+  "version": "0.3.0",
+  "description": "Static Web site generator",
+  "keywords": [
+    "static",
+    "web",
+    "website",
+    "create",
+    "generator",
+    "command"
+  ],
+  "author": "shiy2008@gmail.com",
+  "license": "AGPL-3.0",
+  "homepage": "https://web-cell.tk/create-git-web-site/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EasyWebApp/create-git-web-site.git"
+  },
+  "bugs": {
+    "url": "https://github.com/EasyWebApp/create-git-web-site/issues"
+  },
+  "main": "source/index.js",
+  "bin": "dist/index.js",
+  "engines": {
+    "node": "^6.3.0"
+  },
+  "scripts": {
+    "lint": "eslint . --ignore-pattern dist/ --fix",
+    "build": "npm run lint  &&  amd-bundle source/index dist/index",
+    "test": "npm run build",
+    "prepublishOnly": "npm test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test  &&  git add ."
+    }
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "@babel/runtime": "^7.2.0",
+    "@tech_query/node-toolkit": "^0.8.2",
+    "commander": "^2.19.0",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^7.0.1",
+    "jsdom": "^13.1.0",
+    "marked": "^0.5.2",
+    "node-fetch": "^2.3.0",
+    "simple-git": "^1.107.0",
+    "web-cell": "^0.10.12"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "acorn": "^6.0.4",
+    "amd-bundle": "^1.7.4",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "husky": "^1.2.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
+  }
+}
